@@ -151,7 +151,7 @@ const WeatherDashboard = () => {
             {/* 2nd Place */}
             <div className="order-2 md:order-1">
               <div className="bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg p-4 text-center transform md:translate-y-8">
-                <div className="text-4xl mb-2">🥈</div>
+                <div className="text-4xl mb-2 font-bold text-gray-700">2nd</div>
                 <WeatherCard city={sortedData[1]} highlight />
               </div>
             </div>
@@ -159,7 +159,7 @@ const WeatherDashboard = () => {
             {/* 1st Place */}
             <div className="order-1 md:order-2">
               <div className="bg-gradient-to-br from-yellow-200 to-yellow-400 rounded-lg p-4 text-center">
-                <div className="text-5xl mb-2">🥇</div>
+                <div className="text-5xl mb-2 font-bold text-yellow-700">1st</div>
                 <WeatherCard city={sortedData[0]} highlight />
               </div>
             </div>
@@ -167,7 +167,7 @@ const WeatherDashboard = () => {
             {/* 3rd Place */}
             <div className="order-3 md:order-3">
               <div className="bg-gradient-to-br from-orange-200 to-orange-300 rounded-lg p-4 text-center transform md:translate-y-16">
-                <div className="text-4xl mb-2">🥉</div>
+                <div className="text-4xl mb-2 font-bold text-orange-700">3rd</div>
                 <WeatherCard city={sortedData[2]} highlight />
               </div>
             </div>

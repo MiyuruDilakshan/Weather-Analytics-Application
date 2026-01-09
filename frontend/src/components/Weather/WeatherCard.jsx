@@ -123,7 +123,7 @@ const WeatherCard = ({ city, highlight = false }) => {
 
         {city.fromCache && (
           <div className="mt-3 text-xs text-green-600 dark:text-green-400 flex items-center">
-            <span className="mr-1">✓</span> Cached data
+            <span className="mr-1 font-bold">CACHED</span> Data from cache
           </div>
         )}
       </div>

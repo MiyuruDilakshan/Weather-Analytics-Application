@@ -1,19 +1,29 @@
 import React from 'react';
-import { AuthProvider } from './context/AuthContext';
+import { Auth0Provider } from '@auth0/auth0-react';
 import WeatherDashboard from './components/Weather/WeatherDashboard';
 import Header from './components/Layout/Header';
+import ProtectedRoute from './components/Auth/ProtectedRoute';
 import './App.css';
 
 function App() {
   return (
-    <AuthProvider>
-      <div className="App">
+    <Auth0Provider
+      domain={process.env.REACT_APP_AUTH0_DOMAIN}
+      clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
+      authorizationParams={{
+        redirect_uri: window.location.origin,
+        audience: process.env.REACT_APP_AUTH0_AUDIENCE
+      }}
+    >
+      <div className="App min-h-screen bg-gray-50 dark:bg-gray-900">
         <Header />
-        <main className="container mt-4">
-          <WeatherDashboard />
+        <main className="container mx-auto px-4 py-8">
+          <ProtectedRoute>
+            <WeatherDashboard />
+          </ProtectedRoute>
         </main>
       </div>
-    </AuthProvider>
+    </Auth0Provider>
   );
 }
 
