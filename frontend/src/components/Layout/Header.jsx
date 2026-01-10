@@ -31,24 +31,26 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-gradient-to-r from-indigo-600 to-purple-600 shadow-lg">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex justify-between items-center">
+    <header className="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-gray-900/75 border-b border-gray-200/60 dark:border-gray-700/60">
+      <div className="container mx-auto px-4 h-20 sm:h-24 flex items-center">
+        <div className="flex justify-between items-center w-full">
+          {/* Title */}
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-white">
+            <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
               Weather Analytics
             </h1>
           </div>
 
-          <div className="flex items-center gap-4">
+          {/* Controls */}
+          <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
             {/* Modern Dark Mode Toggle Switch */}
-            <div className="flex items-center gap-2">
-              <span className="text-white text-sm font-medium">
+            <div className="flex items-center gap-1 sm:gap-2">
+              <span className="text-gray-700 dark:text-gray-200 text-xs sm:text-sm font-medium hidden md:inline">
                 {isDarkMode ? 'Dark' : 'Light'}
               </span>
               <button
                 onClick={toggleDarkMode}
-                className="relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+                className="relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500/40"
                 style={{ backgroundColor: isDarkMode ? '#4f46e5' : '#cbd5e1' }}
                 role="switch"
                 aria-checked={isDarkMode}
@@ -63,24 +65,25 @@ const Header = () => {
                   }}
                 />
               </button>
+              
             </div>
 
             {isAuthenticated ? (
-              <div className="flex items-center gap-4">
-                <div className="text-white text-sm">
-                  <span className="font-medium">{user?.name || user?.email}</span>
+              <>
+                <div className="text-gray-700 dark:text-gray-200 text-xs sm:text-sm hidden sm:block">
+                  <span className="font-medium truncate max-w-[160px] inline-block">{user?.email}</span>
                 </div>
                 <button
                   onClick={() => logout({ returnTo: window.location.origin })}
-                  className="bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition duration-200"
+                  className="bg-indigo-600 hover:bg-indigo-700 text-white px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition duration-200 whitespace-nowrap shadow-sm"
                 >
                   Logout
                 </button>
-              </div>
+              </>
             ) : (
               <button
                 onClick={() => loginWithRedirect()}
-                className="bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition duration-200"
+                className="bg-indigo-600 hover:bg-indigo-700 text-white px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition duration-200 whitespace-nowrap shadow-sm"
               >
                 Login
               </button>
@@ -88,6 +91,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+      <div className="h-[1px] bg-gray-900/35 dark:bg-black/50" />
     </header>
   );
 };

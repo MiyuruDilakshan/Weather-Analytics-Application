@@ -14,10 +14,12 @@ function App() {
         redirect_uri: window.location.origin,
         audience: process.env.REACT_APP_AUTH0_AUDIENCE
       }}
+      cacheLocation="localstorage"
+      useRefreshTokens={true}
     >
       <div className="App min-h-screen bg-gray-50 dark:bg-gray-900">
         <Header />
-        <main className="container mx-auto px-4 py-8">
+        <main className="container mx-auto px-4 pt-24 sm:pt-28 pb-12">
           <ProtectedRoute>
             <WeatherDashboard />
           </ProtectedRoute>
