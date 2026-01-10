@@ -1,15 +1,18 @@
-const express = require('express');
+import express from 'express';
+import weatherController from '../controllers/weatherController.js';
+import authMiddleware from '../middleware/authMiddleware.js';
+import cache from '../config/cache.js';
+
 const router = express.Router();
-const weatherController = require('../controllers/weatherController');
-const authController = require('../controllers/authController');
 
-// Auth routes
-router.post('/auth/login', (req, res) => authController.login(req, res));
-router.post('/auth/logout', (req, res) => authController.logout(req, res));
-router.get('/auth/profile', (req, res) => authController.getProfile(req, res));
+// Weather endpoint - requires authentication
+router.get('/weather', authMiddleware, weatherController.getWeatherDashboard);
 
-// Weather routes
-router.get('/weather/coords', (req, res) => weatherController.getWeatherByCoords(req, res));
-router.get('/weather/city/:city', (req, res) => weatherController.getWeatherByCity(req, res));
+// Cache status debug endpoint
+router.get('/cache/status', (req, res) => {
+  const stats = cache.getStats();
+  const keys = cache.keys();
+  res.json({ stats, keys });
+});
 
-module.exports = router;
+export default router;
