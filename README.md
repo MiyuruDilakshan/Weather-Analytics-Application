@@ -1,6 +1,6 @@
 # Weather Analytics Application (Fidenz)
 
-My name is Miyuru Dilakshan. This is my full stack assignment for Fidenz.
+My name is Miyuru Dilakshan. This is my full stack assignment for Fidenz.(NodeJS+React)
 
 This application:
 
@@ -76,7 +76,20 @@ Frontend runs on `http://localhost:3000`.
 - API Endpoint `GET /api/weather` needs a Bearer token.
 - In Auth0, make sure your SPA has the correct callback URLs and your API audience matches `AUTH0_AUDIENCE`.
 
-## 2. Comfort Index Formula (My Design)
+## 2. UI Previews
+
+### Auth0 Integration
+![Auth0 Configuration](UI%20previews/auth0.png)
+
+### Login Screen
+![Login Screen](UI%20previews/login.png)
+
+### Weather Dashboard Views
+![Dashboard View 1](UI%20previews/ui1.png)
+![Dashboard View 2](UI%20previews/ui2.png)
+![Dashboard View 3](UI%20previews/ui3.png)
+
+## 3. Comfort Index Formula (My Design)
 
 I created a simple Comfort Index score from 0 to 100 using 3 parameters:
 
@@ -98,7 +111,7 @@ WindPenalty     = windSpeed * 1.5
 
 Implementation: `backend/src/services/comfortIndexService.js`
 
-## 3. Reasoning Behind Variable Weights
+## 4. Reasoning Behind Variable Weights
 
 I used these weights to make the score easy to understand and still meaningful:
 
@@ -111,13 +124,13 @@ I selected ideal values based on common comfort range:
 - Ideal temperature: 22°C
 - Ideal humidity: 50%
 
-## 4. Trade-offs I Considered
+## 5. Trade-offs I Considered
 
 - I used a simple linear formula. It is easier to explain and debug, but it may not match real human comfort in extreme climates.
 - I did not include more complex variables like dew point or pressure to keep it simple.
 - I chose 3 parameters because the assignment asked at least 3, and these are available in the API response.
 
-## 5. Cache Design Explanation
+## 6. Cache Design Explanation
 
 I used `node-cache` with 5 minutes TTL (300 seconds).
 
@@ -136,7 +149,7 @@ Debug endpoint:
 
 - `GET /api/cache/status` returns cache stats and keys.
 
-## 6. Known Limitations
+## 7. Known Limitations
 
 - Cache is in-memory. If the backend restarts, cache will be cleared.
 - Comfort Index is a simplified model. Real comfort depends on more factors (clothing, activity, personal preferences).
