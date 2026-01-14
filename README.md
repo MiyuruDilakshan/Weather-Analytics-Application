@@ -1,6 +1,4 @@
-# Weather Analytics Application (Fidenz)
-
-My name is Miyuru Dilakshan. This is my full stack assignment for Fidenz.(NodeJS+React)
+# Weather Analytics Application 
 
 This application:
 
